@@ -39,9 +39,10 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (misterioso)))
+ '(ede-project-directories (quote ("/home/eustache/Test")))
  '(package-selected-packages
    (quote
-    (ggtags zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+    (cedit sr-speedbar ggtags zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,3 +88,13 @@
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 (menu-bar-mode 1)
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+(global-set-key (kbd "<f5>") (lambda ()
+                               (interactive)
+                               (setq-local compilation-read-command nil)
+                               (call-interactively 'compile)))
+(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+(setq speedbar-show-unknown-files t)
+
+
+(require 'ede)
+(global-ede-mode)
